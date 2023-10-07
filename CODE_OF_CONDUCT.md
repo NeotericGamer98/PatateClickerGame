@@ -50,4 +50,5 @@ Thank you for being a part of our community!
 Sincerely,
 
 The Patate Clicker Team
+
 contact.patateclicker@protonmail.com
