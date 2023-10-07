@@ -37,7 +37,7 @@ Violations of this Code of Conduct may result in actions such as warnings, tempo
 
 ## Reporting
 
-If you witness or experience behavior that violates this Code of Conduct, please report it to us by emailing [conduct@patateclicker.com](mailto:conduct@patateclicker.com). All reports will be handled confidentially and will be taken seriously. We are committed to addressing any concerns promptly and effectively.
+If you witness or experience behavior that violates this Code of Conduct, please report it to us by emailing [conduct.patateclicker@protonmail.com](mailto:conduct.patateclicker@protonmailcom). All reports will be handled confidentially and will be taken seriously. We are committed to addressing any concerns promptly and effectively.
 
 ## Attribution
 
@@ -49,5 +49,5 @@ Thank you for being a part of our community!
 
 Sincerely,
 
-[Your Name or Project Team]
-[Your Contact Information]
+The Patate Clicker Team
+contact.patateclicker@protonmail.com
