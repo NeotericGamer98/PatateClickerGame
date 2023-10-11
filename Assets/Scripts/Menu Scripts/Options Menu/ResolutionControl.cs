@@ -1,13 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 public class ResolutionControl : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-    
+
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions; // Resolutions that are 16:9 aspect ratio
 
@@ -41,7 +39,7 @@ public class ResolutionControl : MonoBehaviour
                 currentResolutionIndex = i;
             }
         }
-        
+
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();

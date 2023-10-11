@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.Audio;
-using TMPro;
 
 public class CoreGameplay : MonoBehaviour
 {
@@ -47,7 +44,7 @@ public class CoreGameplay : MonoBehaviour
             PlayerPrefs.SetFloat("Patate Position X", PlayerPrefs.GetFloat("Patate Position X"));
             PlayerPrefs.SetFloat("Patate Position Y", PlayerPrefs.GetFloat("Patate Position Y"));
         }
-        
+
 
     }
 
@@ -58,16 +55,28 @@ public class CoreGameplay : MonoBehaviour
         if (PlayerPrefs.GetInt("Patate Coins") >= 100)
         {
             PlayerPrefs.SetInt("Player Level", PlayerPrefs.GetInt("Player Level") + 1);
-            PlayerPrefs.SetInt("Patate Coins", 0);
         }
-        
+
 
     }
 
-    //Return to main menu if Main Menu button is pressed.
+    //Return to Main Menu if Main Menu button is pressed.
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }
 
+    //Open the Options Menu if the in game settings button is pressed.
+    public void OpenOptionsMenu()
+    {
+        SceneManager.LoadScene("Options Menu");
+    }
+
+    //If the player clicks on the Globe icon, display the player's glotbal leaderboard ranking.
+    public void OpenGlobalLeaderboard()
+    {
+        Application.OpenURL("https://neotericgamer98.github.io/PatateClickerGame/");
+    }
+
+   
 }
