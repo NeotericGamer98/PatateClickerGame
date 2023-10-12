@@ -36,6 +36,13 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    //Load Credits Scene upon CREDITS button click.
+    public void LOAD_CREDITS_MENU()
+    {
+        SceneManager.LoadScene("Credits Menu");
+
+    }
+
     //Close the application and exit to the host operating system when the quit button is clicked.
     public void QUIT_GAME()
     {
@@ -70,17 +77,12 @@ public class MainMenu : MonoBehaviour
                 // If the player has clicked the required number of times, display the secret message
                 GameTitle.text = "You found the easter egg!";
 
-                //Make it rainbow colored.
-                GameTitle.colorGradient = new VertexGradient(new Color(1, 0, 0), new Color(1, 0.5f, 0), new Color(1, 1, 0), new Color(0, 1, 0));
-
-                //Cyclce through the colors in a loop.
-                GameTitle.enableVertexGradient = true;
             }
         }
         else
         {
             // If the player has already found the easter egg, reset the text to the default
-            GameTitle.text = "Patate Clicker Game";
+            GameTitle.text = "Patate Clicker";
             //Reset the click counter
             clickCounter = 0;
 

@@ -1,38 +1,46 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.Audio;
 
 public class PatateCoins : MonoBehaviour
 {
-    //Create a public variable to store the player's Patate Coins.
-    public int patatecoins = 0;
+    //Create a public float variable to store the player's Patate Coins value.
+    public float patatecoins;
 
-    public PatateCoins(int patateCoins)
-    {
-        patatecoins = patateCoins;
-    }
+    //Coin collection sound effect.
+    public AudioClip coinCollection;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        Debug.Log("Patate Coins");
-
-        //Reset Patate Coins to 0 if this is a new game.
-        if (PlayerPrefs.GetInt("New Game") == 1)
-        {
-            PlayerPrefs.SetInt("Patate Coins", 0);
-        }
-        
-
-    }
+    //Create a public TextMeshProUGUI variable to store the Patate Coins text.
+    public TextMeshProUGUI PatateCoinsText;
 
     // Update is called once per frame
     void Update()
     {
+        //Set the Patate Coins text to the player's Patate Coins value.
+        PatateCoinsText.text = PlayerPrefs.GetInt("Patate Coins").ToString();
 
-        //Display the player's current Patate Coins.
-        Debug.Log("Patate Coins: " + PlayerPrefs.GetInt("Patate Coins"));
-        
-       
+        //Organize the Patate Coins value to be displayed dynamically based on the player's Patate Coins value.
+        if (patatecoins >= 1000000000)
+        {
+            PatateCoinsText.text = (patatecoins / 1000000000).ToString("F0") + "B";
+        }
+        else if (patatecoins >= 1000000)
+        {
+            PatateCoinsText.text = (patatecoins / 1000000).ToString("F0") + "M";
+        }
+        else if (patatecoins >= 1000)
+        {
+            PatateCoinsText.text = (patatecoins / 1000).ToString("F0") + "K";
+        }
+
+        //For every coin collectd by clicking the Patate Sprite, play the coin collection sound effect.
+        if (Input.GetMouseButtonDown(0))
+        {
+            GetComponent<AudioSource>().PlayOneShot(coinCollection);
+        }
+      
+
 
     }
+       
 }

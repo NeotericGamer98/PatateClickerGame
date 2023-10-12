@@ -22,5 +22,20 @@ public class Patate : MonoBehaviour
             PlayerPrefs.SetInt("Patate Coins", PlayerPrefs.GetInt("Patate Coins") + 1);
         }
 
+        //If Patate sprite clicked, bounce back.
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Smoothly shrink the sprite when clicked.
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 0.9f, 0.5f);
+            
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            //Smoothly return the sprite to its original size.
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 1f);
+            
+        }
+
+        
     }
 }
