@@ -1,15 +1,23 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public TextMeshProUGUI GameTitle; // Reference to the TextMeshPro component for the game title
+    private int clickCounter = 0; // Counter for the number of clicks
+    private const int requiredClicks = 10; // Number of clicks required for the secret message
+
 
     // Update is called once per frame
     void Update()
     {
 
         // Animate the Game Title text to pulse in and out.
-        GameObject.Find("Game Title").transform.localScale = new Vector3(1 + Mathf.PingPong(Time.time / 2, 0.1f), 1 + Mathf.PingPong(Time.time / 2, 0.1f), 1);
+        GameObject.Find("GameTitle").transform.localScale = new Vector3(1 + Mathf.PingPong(Time.time / 2, 0.1f), 1 + Mathf.PingPong(Time.time / 2, 0.1f), 1);
+
+        //Also animate the Game Title text to wobble in and out.
+        GameObject.Find("GameTitle").transform.rotation = Quaternion.Euler(0, 0, 5 * Mathf.Sin(Time.time * 2));
 
     }
 
@@ -48,6 +56,37 @@ public class MainMenu : MonoBehaviour
     {
         Application.OpenURL("https://github.com/NeotericGamer98/PatateClickerGame");
     }
+
+    //If the player clicks on the Game Title text enough times, display a secret message.
+    public void SECRET_MESSAGE()
+    {
+        // Check if the player has clicked on the Game Title enough times
+        if (clickCounter != requiredClicks)
+        {
+            clickCounter++; // Increment the click counter
+
+            if (clickCounter == requiredClicks)
+            {
+                // If the player has clicked the required number of times, display the secret message
+                GameTitle.text = "You found the easter egg!";
+
+                //Make it rainbow colored.
+                GameTitle.colorGradient = new VertexGradient(new Color(1, 0, 0), new Color(1, 0.5f, 0), new Color(1, 1, 0), new Color(0, 1, 0));
+
+                //Cyclce through the colors in a loop.
+                GameTitle.enableVertexGradient = true;
+            }
+        }
+        else
+        {
+            // If the player has already found the easter egg, reset the text to the default
+            GameTitle.text = "Patate Clicker Game";
+            //Reset the click counter
+            clickCounter = 0;
+
+        }
+    }
+
 
 
 }

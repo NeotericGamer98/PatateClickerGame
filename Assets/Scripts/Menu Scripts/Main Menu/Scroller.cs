@@ -5,20 +5,26 @@ using UnityEngine.UI;
 
 public class Scroller : MonoBehaviour
 {
-    [SerializeField] private RawImage ScrollingBackground;
-    [SerializeField] private float _x, _y;
+  
+    public float speed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    //The renderer for the background.
+    [SerializeField]
+    private Renderer bgRenderer;
+
+    //X and Y offset for the background.
+    private float x, y;
     
-    }
-
     // Update is called once per frame
     void Update()
     {
 
-        ScrollingBackground.uvRect = new Rect(ScrollingBackground.uvRect.position + (new Vector2(_x, _y) * Time.deltaTime), ScrollingBackground.uvRect.size);
+        //Scrolls the background on the X and Y axis.
+        x += Time.deltaTime * speed;
+        y += Time.deltaTime * speed;
+        bgRenderer.enabled = true;
+        bgRenderer.material.mainTextureOffset = new Vector2(x, y);
         
     }
 }
