@@ -3,7 +3,9 @@ guid: 0d3142733ac9c1140873c38f7a185cce
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - coinCollection: {fileID: 8300000, guid: 1023a8f5f2682ab4285652c3f1bca80b, type: 3}
+  - PatateCoinsText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

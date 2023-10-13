@@ -1,8 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CoreGameplay : MonoBehaviour
 {
+
+    //Create a public Quick Settings UI GameObject.
+    public GameObject quickSettingsUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,13 +56,7 @@ public class CoreGameplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //After 100 Patate Sprite clicks, increase the player's level by 1.
-        if (PlayerPrefs.GetInt("Patate Coins") >= 100)
-        {
-            PlayerPrefs.SetInt("Player Level", PlayerPrefs.GetInt("Player Level") + 1);
-        }
-
-
+        
     }
 
     //Return to Main Menu if Main Menu button is pressed.
@@ -66,16 +65,25 @@ public class CoreGameplay : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    //Open the Options Menu if the in game settings button is pressed.
-    public void OpenOptionsMenu()
-    {
-        SceneManager.LoadScene("Options Menu");
-    }
 
-    //If the player clicks on the Globe icon, display the player's glotbal leaderboard ranking.
+    //If the player clicks on the Globe icon, display the player's globalleaderboard ranking.
     public void OpenGlobalLeaderboard()
     {
         Application.OpenURL("https://neotericgamer98.github.io/PatateClickerGame/");
+    }
+
+    //If the player clicks on the Quick Settings icon, display the Quick Settings UI.
+    public void OpenQuickSettings()
+    {
+        //Display the Quick Settings UI.
+        quickSettingsUI.SetActive(true);
+    }
+
+    //If the player clicks on the Close Quick Settings button, close the Quick Settings UI.
+    public void CloseQuickSettings()
+    {
+        //Close the Quick Settings UI.
+        quickSettingsUI.SetActive(false);
     }
 
    

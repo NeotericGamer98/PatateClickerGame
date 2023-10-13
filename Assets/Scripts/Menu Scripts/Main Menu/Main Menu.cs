@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
     //Load Credits Scene upon CREDITS button click.
     public void LOAD_CREDITS_MENU()
     {
-        SceneManager.LoadScene("Credits Menu");
+        SceneManager.LoadScene("Credits Scene");
 
     }
 
