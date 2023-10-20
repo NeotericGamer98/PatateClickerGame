@@ -8,31 +8,33 @@ public class DataPersistanceManager: MonoBehaviour
     [Header("File Storage Configuration")]
     [SerializeField] private string fileName;
 
-    
+
     private GameData gameData;
 
-    private List<IDataPersistance> dataPersistanceObjects;
+    private List<IDataPersistance> dataPersistanceObjects = new List<IDataPersistance>();
 
     private FileDataHandler dataHandler;
     public static DataPersistanceManager instance { get; private set; }
 
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Debug.LogError("There is more than one DataPersistanceManager in the scene.");
         }
         instance = this;
+
+        // Initialize the data handler in Awake to ensure it's ready.
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
     private void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         LoadGame();
     }
 
-    public void NewGame() { 
+    public void NewGame(GameData gameData) { 
         this.gameData = new GameData();
     }
 
@@ -45,7 +47,7 @@ public class DataPersistanceManager: MonoBehaviour
         if (this.gameData == null)
         {
             Debug.Log("No game data found. Initializing data to defaults.");
-            NewGame();
+            NewGame(gameData);
         }
         //Push the loaded data to all other scripts that need it.
         foreach (IDataPersistance dataPersistanceObj in dataPersistanceObjects)
@@ -72,6 +74,13 @@ public class DataPersistanceManager: MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveGame();
+    }
+
+    //This method is called when the reset game data button is pressed.
+    public void ResetGameData()
+    {
+        //Initialize the game data to a new game.
+        NewGame(gameData);
     }
 
     private List<IDataPersistance> FindAllDataPersistanceObjects()
